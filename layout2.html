@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZOWE | Premium Women's Innerwear</title>
+    <meta name="description" content="ZOWE creates premium women's innerwear around exceptional comfort, considered fit, refined silhouettes and understated luxury.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Luxury editorial typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,ital,wght@6..96,400;6..96,500;6..96,600;6..96,700;6..96,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zowe: {
+                            ivory: '#F6F1EA',
+                            pearl: '#E8DED4',
+                            nude: '#B79D90',
+                            champagne: '#B99A72',
+                            espresso: '#1A1512',
+                            ink: '#26201D',
+                            cocoa: '#62534C'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Bodoni Moda', 'serif'],
+                        sans: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --ivory: #F6F1EA;
+            --pearl: #E8DED4;
+            --nude: #B79D90;
+            --champagne: #B99A72;
+            --espresso: #1A1512;
+            --ink: #26201D;
+            --cocoa: #62534C;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--ivory);
+            color: var(--espresso);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::selection {
+            background: var(--espresso);
+            color: var(--ivory);
+        }
+
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--ivory);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--nude);
+        }
+
+        .luxury-rule {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(185,154,114,.72), transparent);
+        }
+
+        .nav-link {
+            position: relative;
+            color: rgba(246,241,234,.84);
+            transition: color .3s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+            width: 0;
+            height: 1px;
+            background: var(--ivory);
+            transition: width .35s ease;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        #hero {
+            min-height: 100svh;
+            background-image:
+                linear-gradient(90deg, rgba(20,15,12,.80) 0%, rgba(20,15,12,.52) 38%, rgba(20,15,12,.10) 70%, rgba(20,15,12,.18) 100%),
+                linear-gradient(180deg, rgba(0,0,0,.16) 0%, transparent 55%, rgba(15,10,8,.24) 100%),
+                url("_MG_4138.jpg");
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+        }
+
+        .hero-word {
+            letter-spacing: -0.065em;
+            text-wrap: balance;
+        }
+
+        .eyebrow {
+            letter-spacing: .34em;
+        }
+
+        .soft-line {
+            color: rgba(246,241,234,.74);
+        }
+
+        .outline-btn {
+            border: 1px solid rgba(246,241,234,.68);
+            color: var(--ivory);
+            transition: all .35s ease;
+        }
+
+        .outline-btn:hover {
+            background: var(--ivory);
+            color: var(--espresso);
+        }
+
+        .dark-btn {
+            background: var(--espresso);
+            color: var(--ivory);
+            transition: all .35s ease;
+        }
+
+        .dark-btn:hover {
+            background: #30241f;
+            transform: translateY(-2px);
+        }
+
+        .reveal-mask {
+            clip-path: inset(100% 0 0 0);
+        }
+
+        .image-frame {
+            position: relative;
+        }
+
+        .image-frame::after {
+            content: "";
+            position: absolute;
+            inset: 14px -14px -14px 14px;
+            border: 1px solid rgba(185,154,114,.36);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .collection-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collection-card img {
+            transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+        }
+
+        .collection-card:hover img {
+            transform: scale(1.045);
+        }
+
+        .collection-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 55%, rgba(24,17,14,.48) 100%);
+            pointer-events: none;
+        }
+
+        .collection-caption {
+            position: absolute;
+            z-index: 2;
+            left: 24px;
+            right: 24px;
+            bottom: 22px;
+            color: white;
+        }
+
+        .marquee-track {
+            width: max-content;
+            animation: marquee 22s linear infinite;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        .quote-mark {
+            font-family: "Bodoni Moda", serif;
+            font-size: 7rem;
+            line-height: .5;
+            color: rgba(185,154,114,.55);
+        }
+
+        .footer-link {
+            color: rgba(246,241,234,.58);
+            transition: color .25s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--ivory);
+        }
+
+        @media (max-width: 1023px) {
+            #hero {
+                background-position: 58% center;
+                min-height: 92svh;
+            }
+
+            .hero-word {
+                letter-spacing: -0.045em;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #hero {
+                background-image:
+                    linear-gradient(180deg, rgba(20,15,12,.48) 0%, rgba(20,15,12,.20) 35%, rgba(20,15,12,.72) 100%),
+                    url("_MG_4138.jpg");
+                background-position: 58% center;
+            }
+
+            .image-frame::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+
+    <!-- Transparent Luxury Header -->
+    <header class="absolute top-0 left-0 w-full z-50 px-5 md:px-10 lg:px-16 py-6 md:py-8">
+        <div class="flex items-center justify-between">
+            <nav class="hidden lg:flex items-center gap-8 text-[10px] font-medium uppercase tracking-[0.22em]">
+                <a href="#collection" class="nav-link">New In</a>
+                <a href="#collection" class="nav-link">Bras</a>
+                <a href="#collection" class="nav-link">Panties</a>
+                <a href="#collection" class="nav-link">Shapewear</a>
+            </nav>
+
+            <a href="#" class="font-display text-3xl md:text-[2.15rem] tracking-[-0.04em] text-zowe-ivory lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+                ZOWE
+            </a>
+
+            <div class="flex items-center gap-5 md:gap-7 text-zowe-ivory text-[10px] font-medium uppercase tracking-[0.2em]">
+                <a href="#" class="hidden sm:block nav-link">Search</a>
+                <a href="#" class="hidden sm:block nav-link">Account</a>
+                <a href="#" class="nav-link">Bag (0)</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section id="hero" class="relative flex items-end lg:items-center px-5 md:px-10 lg:px-16 pb-14 md:pb-20 lg:pb-0">
+            <div class="relative z-10 max-w-[780px] pt-40 lg:pt-20">
+                <div class="overflow-hidden">
+                    <p class="hero-reveal eyebrow uppercase text-[10px] md:text-[11px] font-medium text-zowe-ivory/80 mb-7">
+                        Premium Women's Innerwear
+                    </p>
+                </div>
+
+                <div class="overflow-hidden">
+                    <h1 class="hero-reveal hero-word font-display text-zowe-ivory text-[4.7rem] sm:text-[6rem] md:text-[8.5rem] lg:text-[10rem] leading-[.78] font-medium">
+                        The Luxury
+                    </h1>
+                </div>
+
+                <div class="overflow-hidden">
+                    <h1 class="hero-reveal hero-word font-display italic text-zowe-pearl text-[4.7rem] sm:text-[6rem] md:text-[8.5rem] lg:text-[10rem] leading-[.86] font-normal">
+                        Closest to You.
+                    </h1>
+                </div>
+
+                <div class="overflow-hidden">
+                    <p class="hero-reveal soft-line max-w-lg mt-8 md:mt-10 text-sm md:text-[15px] leading-7 font-light">
+                        Refined innerwear shaped around softness, support and movement. Designed to feel almost invisible, and unmistakably luxurious.
+                    </p>
+                </div>
+
+                <div class="hero-reveal flex flex-wrap items-center gap-3 mt-9">
+                    <a href="#collection" class="outline-btn px-7 py-4 text-[10px] font-semibold uppercase tracking-[0.22em]">
+                        Discover the Collection
+                    </a>
+                    <a href="#story" class="px-6 py-4 text-zowe-ivory text-[10px] font-semibold uppercase tracking-[0.22em] border-b border-white/50">
+                        Our Philosophy
+                    </a>
+                </div>
+
+                <div class="hero-reveal mt-12 flex items-end gap-7 md:gap-10 text-zowe-ivory">
+                    <div>
+                        <span id="days" class="font-display text-3xl md:text-4xl">00</span>
+                        <span class="block mt-1 text-[8px] uppercase tracking-[0.2em] text-white/55">Days</span>
+                    </div>
+                    <div>
+                        <span id="hours" class="font-display text-3xl md:text-4xl">00</span>
+                        <span class="block mt-1 text-[8px] uppercase tracking-[0.2em] text-white/55">Hours</span>
+                    </div>
+                    <div>
+                        <span id="minutes" class="font-display text-3xl md:text-4xl">00</span>
+                        <span class="block mt-1 text-[8px] uppercase tracking-[0.2em] text-white/55">Mins</span>
+                    </div>
+                    <div>
+                        <span id="seconds" class="font-display text-3xl md:text-4xl">00</span>
+                        <span class="block mt-1 text-[8px] uppercase tracking-[0.2em] text-white/55">Secs</span>
+                    </div>
+                    <div class="hidden md:block h-10 w-px bg-white/25"></div>
+                    <p class="hidden md:block text-[9px] uppercase tracking-[0.22em] text-white/60 pb-1">
+                        Debut Collection<br>Oct 19, 2026
+                    </p>
+                </div>
+            </div>
+
+            <div class="absolute right-5 md:right-10 lg:right-16 bottom-8 hidden lg:block text-right text-zowe-ivory/60">
+                <p class="text-[9px] uppercase tracking-[0.28em]">ZOWE / Collection 01</p>
+            </div>
+        </section>
+
+        <!-- Luxury ticker -->
+        <section class="bg-zowe-espresso text-zowe-ivory overflow-hidden border-y border-white/10 py-5">
+            <div class="marquee-track flex whitespace-nowrap">
+                <div class="flex items-center gap-10 pr-10 text-[10px] md:text-[11px] uppercase tracking-[0.28em]">
+                    <span>Second-Skin Comfort</span><span>·</span>
+                    <span>Considered Fit</span><span>·</span>
+                    <span>Refined Silhouettes</span><span>·</span>
+                    <span>Soft-Touch Fabrics</span><span>·</span>
+                    <span>Quiet Luxury</span><span>·</span>
+                </div>
+                <div class="flex items-center gap-10 pr-10 text-[10px] md:text-[11px] uppercase tracking-[0.28em]" aria-hidden="true">
+                    <span>Second-Skin Comfort</span><span>·</span>
+                    <span>Considered Fit</span><span>·</span>
+                    <span>Refined Silhouettes</span><span>·</span>
+                    <span>Soft-Touch Fabrics</span><span>·</span>
+                    <span>Quiet Luxury</span><span>·</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story -->
+        <section id="story" class="bg-zowe-ivory px-5 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 overflow-hidden">
+            <div class="max-w-[1440px] mx-auto grid lg:grid-cols-12 gap-14 lg:gap-20 items-center">
+                <div class="lg:col-span-6 story-image opacity-0 translate-y-12">
+                    <div class="image-frame max-w-[610px]">
+                        <div class="reveal-mask overflow-hidden aspect-[4/5]">
+                            <img src="Copy of _MG_3949.JPG"
+                                 alt="ZOWE premium women's innerwear detail"
+                                 class="story-img w-full h-[115%] object-cover object-center">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 lg:pl-8">
+                    <p class="story-copy opacity-0 translate-y-8 text-zowe-champagne text-[10px] font-semibold uppercase tracking-[0.3em] mb-5">
+                        Our Philosophy
+                    </p>
+
+                    <h2 class="story-copy opacity-0 translate-y-8 font-display text-zowe-espresso text-5xl md:text-7xl lg:text-[5.6rem] leading-[.95] tracking-[-0.045em]">
+                        Made to feel
+                        <span class="block italic font-normal text-zowe-nude">like nothing else.</span>
+                    </h2>
+
+                    <div class="luxury-rule my-9 md:my-11"></div>
+
+                    <p class="story-copy opacity-0 translate-y-8 text-zowe-cocoa text-sm md:text-[15px] leading-7 font-light max-w-xl">
+                        ZOWE believes true luxury is personal. It is the softness against your skin, the support you do not have to think about, and the confidence that comes from a fit made with intention.
+                    </p>
+
+                    <p class="story-copy opacity-0 translate-y-8 text-zowe-cocoa text-sm md:text-[15px] leading-7 font-light max-w-xl mt-5">
+                        Breathable fabrics, refined finishes and considered silhouettes come together to create innerwear that moves naturally with your body and sits beautifully beneath everything you wear.
+                    </p>
+
+                    <div class="story-copy opacity-0 translate-y-8 flex gap-10 md:gap-16 mt-10 pt-8 border-t border-zowe-pearl">
+                        <div>
+                            <p class="font-display text-3xl">01</p>
+                            <p class="mt-2 text-[9px] uppercase tracking-[0.2em] text-zowe-cocoa">Comfort</p>
+                        </div>
+                        <div>
+                            <p class="font-display text-3xl">02</p>
+                            <p class="mt-2 text-[9px] uppercase tracking-[0.2em] text-zowe-cocoa">Fit</p>
+                        </div>
+                        <div>
+                            <p class="font-display text-3xl">03</p>
+                            <p class="mt-2 text-[9px] uppercase tracking-[0.2em] text-zowe-cocoa">Confidence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collection -->
+        <section id="collection" class="bg-[#EDE5DE] px-5 md:px-10 lg:px-16 py-24 md:py-32">
+            <div class="max-w-[1440px] mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14 md:mb-20">
+                    <div>
+                        <p class="collection-head opacity-0 translate-y-6 text-zowe-champagne text-[10px] font-semibold uppercase tracking-[0.3em] mb-4">
+                            Collection 01
+                        </p>
+                        <h2 class="collection-head opacity-0 translate-y-6 font-display text-zowe-espresso text-5xl md:text-7xl lg:text-[5.2rem] tracking-[-0.045em] leading-none">
+                            The First Edit
+                        </h2>
+                    </div>
+
+                    <p class="collection-head opacity-0 translate-y-6 max-w-md text-zowe-cocoa text-sm leading-6 font-light md:text-right">
+                        Essential forms, elevated through fabric, proportion and finish.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-5 lg:gap-7">
+                    <article class="collection-item opacity-0 translate-y-12">
+                        <div class="collection-card aspect-[3/4]">
+                            <img src="Copy of _MG_3772.JPG" alt="ZOWE premium bra collection" class="w-full h-full object-cover">
+                            <div class="collection-caption">
+                                <p class="text-[9px] uppercase tracking-[0.24em] text-white/70 mb-2">01</p>
+                                <h3 class="font-display text-3xl">Bras</h3>
+                                <p class="text-[11px] mt-1 text-white/75">Support, refined.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="collection-item opacity-0 translate-y-12 md:mt-14">
+                        <div class="collection-card aspect-[3/4]">
+                            <img src="_MG_4284.JPG" alt="ZOWE premium panties collection" class="w-full h-full object-cover">
+                            <div class="collection-caption">
+                                <p class="text-[9px] uppercase tracking-[0.24em] text-white/70 mb-2">02</p>
+                                <h3 class="font-display text-3xl">Panties</h3>
+                                <p class="text-[11px] mt-1 text-white/75">Everyday softness, elevated.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="collection-item opacity-0 translate-y-12">
+                        <div class="collection-card aspect-[3/4]">
+                            <img src="_MG_4087.JPG" alt="ZOWE premium shapewear collection" class="w-full h-full object-cover">
+                            <div class="collection-caption">
+                                <p class="text-[9px] uppercase tracking-[0.24em] text-white/70 mb-2">03</p>
+                                <h3 class="font-display text-3xl">Shapewear</h3>
+                                <p class="text-[11px] mt-1 text-white/75">Sculpted without restriction.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="text-center mt-14 md:mt-20">
+                    <a href="#" class="dark-btn inline-block px-8 py-4 text-[10px] font-semibold uppercase tracking-[0.24em]">
+                        View Collection
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand statement -->
+        <section class="bg-zowe-ivory px-5 py-28 md:py-36 text-center overflow-hidden">
+            <div class="max-w-5xl mx-auto statement opacity-0 translate-y-10">
+                <div class="quote-mark">“</div>
+                <p class="font-display text-zowe-espresso text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.035em]">
+                    What touches your skin should feel
+                    <span class="italic text-zowe-nude">extraordinary.</span>
+                </p>
+                <p class="mt-8 text-[10px] uppercase tracking-[0.3em] text-zowe-cocoa">
+                    ZOWE
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Premium footer -->
+    <footer class="bg-zowe-espresso text-zowe-ivory px-5 md:px-10 lg:px-16 pt-16 md:pt-20 pb-8">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="grid md:grid-cols-3 gap-12 md:items-end pb-14 border-b border-white/10">
+                <div>
+                    <p class="font-display text-5xl tracking-[-0.045em]">ZOWE</p>
+                    <p class="font-display italic text-zowe-nude text-2xl mt-2">The luxury closest to you.</p>
+                </div>
+
+                <div class="md:text-center text-[10px] uppercase tracking-[0.22em] leading-8">
+                    <a href="#" class="footer-link block">Instagram</a>
+                    <a href="#" class="footer-link block">Size Guide</a>
+                    <a href="#" class="footer-link block">Customer Care</a>
+                </div>
+
+                <div class="md:text-right">
+                    <p class="text-[9px] uppercase tracking-[0.25em] text-white/40">Launching</p>
+                    <p class="font-display text-2xl mt-2">October 19, 2026</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between gap-4 pt-7 text-[9px] uppercase tracking-[0.18em] text-white/35">
+                <p>Premium Women's Innerwear</p>
+                <p>© <span id="year"></span> ZOWE. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("year").textContent = new Date().getFullYear();
+
+            // Countdown
+            const targetDate = new Date("October 19, 2026 00:00:00").getTime();
+            const ids = ["days", "hours", "minutes", "seconds"];
+            const els = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+
+            const pad = n => String(n).padStart(2, "0");
+
+            function updateTimer() {
+                const distance = targetDate - Date.now();
+
+                if (distance <= 0) {
+                    ids.forEach(id => els[id].textContent = "00");
+                    return;
+                }
+
+                const days = Math.floor(distance / 86400000);
+                const hours = Math.floor((distance % 86400000) / 3600000);
+                const minutes = Math.floor((distance % 3600000) / 60000);
+                const seconds = Math.floor((distance % 60000) / 1000);
+
+                els.days.textContent = pad(days);
+                els.hours.textContent = pad(hours);
+                els.minutes.textContent = pad(minutes);
+                els.seconds.textContent = pad(seconds);
+            }
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero
+            gsap.fromTo(".hero-reveal",
+                { y: 70, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1.15,
+                    stagger: 0.11,
+                    ease: "power3.out",
+                    delay: 0.2
+                }
+            );
+
+            // Story image
+            gsap.to(".story-image", {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#story",
+                    start: "top 75%"
+                }
+            });
+
+            gsap.to("#story .reveal-mask", {
+                clipPath: "inset(0% 0 0 0)",
+                duration: 1.4,
+                ease: "power4.inOut",
+                scrollTrigger: {
+                    trigger: "#story",
+                    start: "top 74%"
+                }
+            });
+
+            gsap.to(".story-copy", {
+                y: 0,
+                opacity: 1,
+                duration: .9,
+                stagger: .12,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#story",
+                    start: "top 70%"
+                }
+            });
+
+            gsap.to(".story-img", {
+                yPercent: 8,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#story",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+
+            // Collection
+            gsap.to(".collection-head", {
+                y: 0,
+                opacity: 1,
+                duration: .9,
+                stagger: .12,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#collection",
+                    start: "top 78%"
+                }
+            });
+
+            gsap.to(".collection-item", {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: .16,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#collection",
+                    start: "top 65%"
+                }
+            });
+
+            // Statement
+            gsap.to(".statement", {
+                y: 0,
+                opacity: 1,
+                duration: 1.1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".statement",
+                    start: "top 85%"
+                }
+            });
+        });
+    </script>
+</body>
+</html>

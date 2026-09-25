@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOWE | Premium Women's Innerwear</title>
+    <meta name="description" content="Discover ZOWE, premium women's innerwear designed around exceptional comfort, considered fit, soft-touch fabrics and understated style.">
+    <meta name="keywords" content="ZOWE, women's innerwear, premium lingerie, bras, panties, shapewear, comfortable innerwear">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cream: '#F9F8F6',
+                            beige: '#E6E2DD',
+                            taupe: '#8B7E74',
+                            charcoal: '#2D2D2D',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F9F8F6;
+            color: #2D2D2D;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        #hero{
+            background-image: url("_MG_4138.jpg");
+            background-size: cover;
+            background-position: center;
+ background-repeat: no-repeat;
+        }
+
+        /* Initial states to prevent flash of unstyled content before GSAP kicks in */
+        .gsap-hide {
+            visibility: hidden;
+        }
+
+        /* Image reveal mask */
+        .reveal-mask {
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+        }
+
+        /* Smooth image rendering */
+        img {
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F8F6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E6E2DD;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8B7E74;
+        }
+    </style>
+</head>
+<body class="font-sans selection:bg-brand-taupe selection:text-brand-cream">
+
+    <main class="relative w-full">
+        
+        <!-- Hero Section -->
+        <section class="relative min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 py-20 lg:py-0 overflow-hidden" id="hero">
+            
+            <!-- Left Text Content -->
+            <div class="w-full lg:w-1/2 flex flex-col justify-center z-10 pt-10 lg:pt-0">
+                <div class="overflow-hidden mb-4">
+                    <p class="gsap-hero-text text-brand-taupe uppercase tracking-[0.3em] text-xs font-medium">Premium Women's Innerwear</p>
+                </div>
+                
+                <div class="overflow-hidden mb-2">
+                    <h1 class="gsap-hero-text font-serif text-5xl md:text-7xl lg:text-8xl text-brand-charcoal leading-tight">
+                        ZOWE<br/><span class="italic text-brand-taupe font-light">Second Skin</span>
+                    </h1>
+                </div>
+                
+                <div class="overflow-hidden mt-6 mb-12 max-w-md">
+                    <p class="gsap-hero-text text-brand-charcoal/70 font-light leading-relaxed text-sm md:text-base">
+                        Luxury begins with how you feel. ZOWE creates refined innerwear with soft-touch fabrics, thoughtful support and flattering silhouettes designed to move naturally with you. 
+                    </p>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="gsap-hero-text flex gap-6 md:gap-10 border-t border-brand-beige pt-8 max-w-md">
+                    <div class="flex flex-col">
+                        <span id="days" class="font-serif text-3xl md:text-4xl text-brand-charcoal">00</span>
+                        <span class="uppercase text-[10px] tracking-widest text-brand-taupe mt-1">Days</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span id="hours" class="font-serif text-3xl md:text-4xl text-brand-charcoal">00</span>
+                        <span class="uppercase text-[10px] tracking-widest text-brand-taupe mt-1">Hours</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span id="minutes" class="font-serif text-3xl md:text-4xl text-brand-charcoal">00</span>
+                        <span class="uppercase text-[10px] tracking-widest text-brand-taupe mt-1">Mins</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span id="seconds" class="font-serif text-3xl md:text-4xl text-brand-charcoal">00</span>
+                        <span class="uppercase text-[10px] tracking-widest text-brand-taupe mt-1">Secs</span>
+                    </div>
+                </div>
+                
+                <div class="overflow-hidden mt-8">
+                     <p class="gsap-hero-text uppercase tracking-widest text-xs font-medium text-brand-charcoal">Debut Collection · Oct 19, 2026</p>
+                </div>
+            </div>
+
+            <!-- Right Image Content -->
+            <div class="w-full lg:w-1/2 h-[60vh] lg:h-screen mt-16 lg:mt-0 flex items-center justify-center lg:justify-end">
+                <div class="relative w-full max-w-lg h-full max-h-[80vh] overflow-hidden rounded-sm hero-img-wrapper reveal-mask gsap-hide">
+                    <!-- Parallax image -->
+                    <!-- <img src="_MG_4138.jpg" alt="ZOWE Women's Innerwear Campaign" class="w-full h-[120%] object-cover object-center absolute top-[-10%] left-0 hero-img" onerror="this.src='https://placehold.co/800x1200/e6e2dd/2d2d2d?text=Hero+Image+Missing'"> -->
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- Story / Teaser Section -->
+        <section class="relative w-full py-32 px-6 lg:px-20 bg-brand-cream overflow-hidden">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24">
+                
+                <!-- Story Text -->
+                <div class="w-full lg:w-1/2 story-text-container">
+                    <h2 class="font-serif text-4xl md:text-6xl text-brand-charcoal mb-8 story-heading opacity-0 translate-y-10">
+                        Designed around <br/><i class="text-brand-taupe">the woman wearing it.</i>
+                    </h2>
+                    <p class="text-brand-charcoal/70 font-light leading-relaxed mb-6 story-para opacity-0 translate-y-10">
+                        ZOWE believes the best innerwear should never ask you to choose between comfort and style. Every piece is shaped around softness, support and a fit that feels effortless from morning to night.
+                    </p>
+                    <p class="text-brand-charcoal/70 font-light leading-relaxed story-para opacity-0 translate-y-10">
+                        Breathable fabrics, refined finishes and considered silhouettes come together in pieces made to sit beautifully beneath what you wear. Quietly luxurious, confidently feminine and made for everyday life.
+                    </p>
+                </div>
+
+                <!-- Story Image -->
+                <div class="w-full lg:w-1/2">
+                    <div class="relative w-full aspect-[4/5] overflow-hidden story-img-wrapper reveal-mask">
+                        <img src="Copy of _MG_3949.JPG" alt="ZOWE premium women's innerwear details" class="w-full h-[120%] object-cover object-center absolute top-[-10%] left-0 story-img" onerror="this.src='https://placehold.co/800x1000/e6e2dd/2d2d2d?text=Details+Image+Missing'">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Collection Preview Grid -->
+        <section class="relative w-full py-20 px-6 lg:px-20 bg-brand-beige/30">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-end justify-between mb-16">
+                    <h3 class="font-serif text-3xl md:text-5xl text-brand-charcoal grid-heading opacity-0">The First Edit</h3>
+                    <p class="uppercase tracking-widest text-xs font-medium text-brand-taupe hidden sm:block grid-heading opacity-0">Comfort · Fit · Confidence</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Bras Editorial -->
+                    <div class="grid-item opacity-0 translate-y-16">
+                        <div class="w-full aspect-[3/4] overflow-hidden bg-brand-beige group">
+                            <img src="Copy of _MG_3772.JPG" alt="ZOWE premium bra collection" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                        </div>
+                    </div>
+                    
+                    <!-- Panties Editorial -->
+                    <div class="grid-item opacity-0 translate-y-16 md:mt-16">
+                        <div class="w-full aspect-[3/4] overflow-hidden bg-brand-beige group">
+                            <img src="_MG_4284.JPG" alt="ZOWE premium panties collection" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                        </div>
+                    </div>
+
+                    <!-- Shapewear Editorial -->
+                    <div class="grid-item opacity-0 translate-y-16">
+                        <div class="w-full aspect-[3/4] overflow-hidden bg-brand-beige group">
+                            <img src="_MG_4087.JPG" alt="ZOWE premium shapewear collection" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Minimal Footer -->
+        <footer class="w-full py-12 px-6 text-center border-t border-brand-beige bg-brand-cream">
+            <p class="font-serif text-2xl text-brand-charcoal mb-2">ZOWE</p>
+            <p class="font-serif italic text-brand-taupe text-lg mb-5">The luxury closest to you.</p>
+            <p class="text-xs text-brand-charcoal/50 uppercase tracking-widest">Premium Women's Innerwear · © <span id="year"></span> ZOWE. All Rights Reserved.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // --- 1. Countdown Timer Logic ---
+            const targetDate = new Date("October 19, 2026 00:00:00").getTime();
+            
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            function padZero(num) {
+                return num < 10 ? '0' + num : num;
+            }
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance < 0) {
+                    clearInterval(timerInterval);
+                    daysEl.textContent = "00";
+                    hoursEl.textContent = "00";
+                    minutesEl.textContent = "00";
+                    secondsEl.textContent = "00";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                daysEl.textContent = padZero(days);
+                hoursEl.textContent = padZero(hours);
+                minutesEl.textContent = padZero(minutes);
+                secondsEl.textContent = padZero(seconds);
+            }
+
+            // Initial call to avoid delay
+            updateTimer();
+            const timerInterval = setInterval(updateTimer, 1000);
+
+
+            // --- 2. GSAP Animations ---
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Remove hidden class from hero image wrapper to start animations cleanly
+            document.querySelector('.hero-img-wrapper').classList.remove('gsap-hide');
+
+            // --- Hero Section Timeline (On Load) ---
+            const heroTl = gsap.timeline();
+
+            // Reveal Hero Image (Clip Path Wipe up)
+            heroTl.to('.hero-img-wrapper', {
+                clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
+                duration: 1.5,
+                ease: 'power4.inOut'
+            })
+            // Subtle scale down of the image inside
+            .fromTo('.hero-img', { scale: 1.2 }, { scale: 1, duration: 2, ease: 'power3.out' }, "-=1.2")
+            // Stagger reveal text lines (sliding up)
+            .fromTo('.gsap-hero-text', 
+                { y: 60, opacity: 0 }, 
+                { y: 0, opacity: 1, stagger: 0.15, duration: 1, ease: 'power3.out' }, 
+                "-=1.5"
+            );
+
+            // --- Hero Image Parallax on Scroll ---
+            gsap.to('.hero-img', {
+                yPercent: 20,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#hero",
+                    start: "top top", 
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+
+
+            // --- Teaser/Story Section Animations ---
+            const storyTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".story-text-container",
+                    start: "top 80%", // Trigger when top of element hits 80% down the viewport
+                }
+            });
+
+            // Reveal Story Image (Clip Path Wipe right)
+            storyTl.to('.story-img-wrapper', {
+                clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
+                duration: 1.5,
+                ease: 'power3.inOut'
+            })
+            // Story Text slide up
+            .to('.story-heading, .story-para', {
+                y: 0,
+                opacity: 1,
+                stagger: 0.2,
+                duration: 1,
+                ease: 'power3.out'
+            }, "-=1.0");
+
+            // Story Image Parallax
+            gsap.to('.story-img', {
+                yPercent: 15,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".story-img-wrapper",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+
+
+            // --- Lookbook Grid Section Animations ---
+            // Fade in headings
+            gsap.to('.grid-heading', {
+                opacity: 1,
+                duration: 1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: ".grid-heading",
+                    start: "top 85%"
+                }
+            });
+
+            // Stagger fade up grid items
+            gsap.to('.grid-item', {
+                y: 0,
+                opacity: 1,
+                stagger: 0.2,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: ".grid-item",
+                    start: "top 85%"
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
